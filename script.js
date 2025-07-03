@@ -32,32 +32,37 @@ for(const control of quantityControls) {
         somme();
     });
     
-    function somme() {
+   
+    document.querySelectorAll('.like-button').forEach(button => {
+        button.addEventListener('click', () => {
+            if (button.style.color === 'red') {
+                button.style.color = 'gray'; 
+            } else {
+                button.style.color = 'red'; 
+            }
+        });
+    });
+    }
+     function somme() {
         const totalElement = document.querySelector('.total'); 
         let total = 0;
         
         document.querySelectorAll('.card-body').forEach(card => {
             const prix = parseFloat(card.querySelector('.unit-price').textContent);
             const quantite = parseInt(card.querySelector('.quantity').textContent); 
+            console.log( "prix" ,prix);
+            console.log("quantite" ,quantite);
             total += prix * quantite;
+            console.log("total",total);
+            
         });
         
         totalElement.textContent = total + ' $'; 
     }
-    document.querySelectorAll('.like-button').forEach(button => {
-        button.addEventListener('click', () => {
-            if (button.style.color === 'red') {
-                button.style.color = 'gray'; // Revert to gray if already liked
-            } else {
-                button.style.color = 'red'; // Change to red when liked
-            }
-        });
-    });
-    
 
     
 
-}
+
 
 
   
